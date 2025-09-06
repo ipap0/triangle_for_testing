@@ -21,7 +21,7 @@ def is_triangle(a, b, c):
 #основной код:
 s = input('введите 3 стороны треугольника')
 try:
-    a, b, c = map(float, s.strip().replace(',').split(' '))
+    a, b, c = map(float, s.strip().replace(',', '').split(' '))
     if a>0 and c>0 and b>0:
         trrr = Triangle(a, b, c)
         print(trrr.perimeter())
