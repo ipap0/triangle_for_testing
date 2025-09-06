@@ -1,13 +1,18 @@
 from math import sqrt
 
+class TrException (Exception):
+    pass
+
 class Triangle:
     def __init__(self, a, b, c):
+        if a<=0 or c<=0 or b<=0:
+            raise TrException('отрицательная или нулевая длина стороны')
         if is_triangle(a, b, c):
             self.a = a
             self.b = b
             self.c = c
         else:
-            raise Exception('это не треугольник')
+            raise TrException('это не треугольник')
 
     def perimeter(self):
         return round(self.a+self.b+self.c, 14)
@@ -19,17 +24,16 @@ def is_triangle(a, b, c):
     return a<b+c and b <a+c and c< a+b
 
 #основной код:
-s = input('введите 3 стороны треугольника')
-try:
-    a, b, c = map(float, s.strip().replace(',', '').split(' '))
-    if a>0 and c>0 and b>0:
+if __name__ == 'main':
+    s = input('введите 3 стороны треугольника')
+    try:
+        a, b, c = map(float, s.strip().replace(',', '').split(' '))
         trrr = Triangle(a, b, c)
         print(trrr.perimeter())
-    else:
-        print('отрицательная длина стороны')
-except Exception as e:
-    print(str(e))
-except:
-    print('неверные данные')
 
-x = input()
+    except TrException as e:
+        print(str(e))
+    except:
+        print('неверные данные')
+
+    x = input()
