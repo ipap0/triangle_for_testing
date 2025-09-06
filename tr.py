@@ -24,7 +24,7 @@ def is_triangle(a, b, c):
     return a<b+c and b <a+c and c< a+b
 
 #основной код:
-if __name__ == 'main':
+if __name__ == '__main__':
     s = input('введите 3 стороны треугольника')
     try:
         a, b, c = map(float, s.strip().replace(',', '').split(' '))
